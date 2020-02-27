@@ -10,3 +10,14 @@ def isiter(arg, allow_dict=True, allow_str=False):
         return False
     else:
         return True
+
+
+def chunk_iter(iterable, size):
+    arr = []
+    for some in iterable:
+        arr.append(some)
+        if len(arr) >= size:
+            yield arr
+            arr = []
+    if len(arr) > 0:
+        yield arr
