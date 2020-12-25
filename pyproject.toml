@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "peb"
-version = "0.0.0b1"
+version = "0.0.1"
 description = ""
 authors = ["joyongjin <wnrhd114@gmail.com>"]
 license = "MIT"
