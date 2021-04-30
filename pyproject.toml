@@ -2,10 +2,10 @@
 name = "peb"
 version = "0.0.1"
 description = ""
-authors = ["joyongjin <wnrhd114@gmail.com>"]
+authors = ["Jrog <jrog612@gmail.com>"]
 license = "MIT"
 readme = 'README.md'
-repository = 'https://github.com/joyongjin/peb'
+repository = 'https://github.com/jrog612/peb'
 
 [tool.poetry.dependencies]
 python = "^3.5"
