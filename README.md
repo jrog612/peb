@@ -1,3 +1,3 @@
 # PEB
 
-PEB is python extensions.
+PEB is Python Extensions Bundle.
