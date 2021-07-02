@@ -1,5 +1,5 @@
 import collections
-from collections.abc import Iterable
+from collections.abc import Iterable, Mapping
 
 
 def wrap_list(some):
@@ -55,3 +55,12 @@ class MutableMapping(collections.MutableMapping):
 
     def __keytransform__(self, key):
         return key
+
+
+def deep_update(source, d):
+    for k, v in d.items():
+        if isinstance(v, Mapping):
+            source[k] = deep_update(source.get(k, {}), v)
+        else:
+            source[k] = v
+    return source
