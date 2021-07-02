@@ -2,11 +2,18 @@ import random
 from unittest import TestCase
 
 import peb
+from peb import wrap_list, deep_update
 
 
 class IterationTest(TestCase):
     def setUp(self):
         pass
+
+    def test_wrap_list(self):
+        self.assertEqual(wrap_list('test'), ['test'])
+        self.assertEqual(wrap_list(['test']), ['test'])
+        self.assertEqual(wrap_list(1), [1])
+        self.assertEqual(wrap_list([1]), [1])
 
     def test_chunk_iter(self):
         size = 1000
@@ -47,3 +54,48 @@ class IterationTest(TestCase):
         self.assertFalse(peb.isiter(0.1234))
         self.assertFalse(peb.isiter(0))
         self.assertFalse(peb.isiter(1 + 2j))
+
+    def test_deep_update(self):
+        source_dict = {
+            'test': 'test',
+            'deep': {
+                1: 2,
+                None: 'None',
+                'test': 'test',
+                '2deep': {
+                    'test': 'test',
+                    'keep': 'keep'
+                },
+                'keep': 'keep'
+            },
+            'keep': 'keep'
+        }
+        update_dict = {
+            'test': 'updated',
+            'deep': {
+                1: 3,
+                None: 'updated',
+                'test': 'updated',
+                '2deep': {
+                    'test': 'updated',
+                },
+            },
+        }
+
+        expect_dict = {
+            'test': 'updated',
+            'deep': {
+                1: 3,
+                None: 'updated',
+                'test': 'updated',
+                '2deep': {
+                    'test': 'updated',
+                    'keep': 'keep'
+                },
+                'keep': 'keep'
+            },
+            'keep': 'keep'
+        }
+
+        result = deep_update(source_dict, update_dict)
+        self.assertEqual(expect_dict, result)
