@@ -48,5 +48,5 @@ def isint(some):
     try:
         int(some)
         return True
-    except ValueError:
+    except (ValueError, TypeError):
         return False
