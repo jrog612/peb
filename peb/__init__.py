@@ -1,4 +1,3 @@
-from .case import *
 from .collections import *
 from .number import *
 from .regex import *
