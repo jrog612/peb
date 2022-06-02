@@ -23,4 +23,7 @@ def find_all_filename(string):
 
 
 def get_file_extension(string):
-    return re.search(file_extension_pattern, string).group('ext')
+    result = re.search(file_extension_pattern, string)
+    if not result:
+        return None
+    return result.group('ext')
