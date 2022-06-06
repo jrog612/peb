@@ -1,3 +1,5 @@
+import base64
+import json
 import re
 
 snake_first = re.compile('(.)([A-Z][a-z]+)')
@@ -18,3 +20,14 @@ def truncate(text, limit, suffix='...'):
     if text is None:
         return None
     return (text[:limit] + suffix) if len(text) > limit else text
+
+
+def json_to_base64(data):
+    s = json.dumps(data)
+    b_encoded = base64.b64encode(s.encode())
+    return b_encoded.decode()
+
+
+def base64_to_json(s):
+    b_decoded = base64.b64decode(s)
+    return json.loads(b_decoded)
