@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "peb"
-version = "0.0.6"
+version = "0.0.7"
 description = "Python Extensions Bundle"
 authors = ["Jrog <jrog612@gmail.com>"]
 license = "MIT"
