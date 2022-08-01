@@ -1,4 +1,4 @@
-import collections
+import collections as _collections
 from collections.abc import Iterable, Mapping
 
 
@@ -30,7 +30,7 @@ def chunk_iter(iterable, size):
         yield arr
 
 
-class MutableMapping(collections.MutableMapping):
+class MutableMapping(_collections.MutableMapping):
     """A dictionary that applies an arbitrary key-altering
        function before accessing the keys"""
 
