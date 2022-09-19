@@ -8,7 +8,7 @@ snake_second = re.compile('([a-z0-9])([A-Z])')
 
 def snake_to_camel(s):
     components = s.split('_')
-    return ''.join(x.title() for x in components)
+    return components[0] + ''.join(x.title() for x in components[1:])
 
 
 def camel_to_snake(s):

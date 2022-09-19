@@ -15,18 +15,12 @@ class TextTest(TestCase):
     def get_random_words(self, count):
         return random.choices(random_words, k=count)
 
-    def test_snake_to_camel(self):
+    def test_s2c_and_c2s(self):
         for _ in range(40):
             words = self.get_random_words(random.randint(5, 10))
             snake_case_text = '_'.join(words)
-            camel_case_text = ' '.join(words).title().replace(' ', '')
+            camel_case_text = words[0] + ''.join(x.title() for x in words[1:])
             self.assertEqual(peb.snake_to_camel(snake_case_text), camel_case_text)
-
-    def test_camel_to_snake(self):
-        for _ in range(40):
-            words = self.get_random_words(random.randint(5, 10))
-            camel_case_text = ' '.join(words).title().replace(' ', '')
-            snake_case_text = '_'.join(words)
             self.assertEqual(peb.camel_to_snake(camel_case_text), snake_case_text)
 
     def test_truncate(self):
