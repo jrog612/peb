@@ -7,6 +7,15 @@ def wrap_list(some):
     return [some]
 
 
+def islist(arg):
+    """
+    check arg is list-like
+    """
+    if isinstance(arg, Iterable) and not isinstance(arg, (dict, str, bytes)):
+        return True
+    return False
+
+
 def isiter(arg, allow_dict=True, allow_str=False):
     if not isinstance(arg, Iterable):
         return False
@@ -36,3 +45,10 @@ def deep_update(source, d):
         else:
             source[k] = v
     return source
+
+
+def find_first(func, iterable, default=None):
+    try:
+        return next(filter(func, iterable))
+    except StopIteration:
+        return default

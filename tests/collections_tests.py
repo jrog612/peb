@@ -2,7 +2,7 @@ import random
 from unittest import TestCase
 
 import peb
-from peb import wrap_list, deep_update
+from peb import wrap_list, deep_update, find_first
 
 
 class IterationTest(TestCase):
@@ -99,3 +99,19 @@ class IterationTest(TestCase):
 
         result = deep_update(source_dict, update_dict)
         self.assertEqual(expect_dict, result)
+
+    def test_find_first(self):
+        iterable = range(1, 6)
+        expect = 3
+
+        self.assertEqual(find_first(lambda x: x == expect, iterable), expect)
+
+        iterable = range(1, 100)
+        expect = 'a'
+
+        self.assertIsNone(find_first(lambda x: x == expect, iterable))
+
+        iterable = range(1, 100)
+        default = 'b'
+
+        self.assertEqual(find_first(lambda x: x == expect, iterable, default=default), default)
